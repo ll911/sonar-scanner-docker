@@ -4,11 +4,6 @@ MAINTAINER leo.lou@gov.bc.ca
 ENV SS_VER=3.2.0.1227 \
     SS_HOME=/sonar-scanner
 
-ARG sonarToken \
-    gitURL \
-    gitTag \
-    projectKey
-
 RUN apk update \
   && apk add --no-cache --virtual .dev wget unzip git \
   && git config --global url.https://github.com/.insteadOf git://github.com/ \
