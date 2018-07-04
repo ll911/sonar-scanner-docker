@@ -11,6 +11,7 @@ RUN apk update \
   && unzip /tmp/ss.zip -d / \
   && ln -s /sonar-scanner-$SS_VER-linux $SS_HOME \
   && JAVA_HOME=$SS_HOME/jre PATH=$SS_HOME/bin:$SS_HOME/jre/bin:$PATH LD_LIBRARY_PATH=$SS_HOME/lib:$SS_HOME/jre/lib:$LD_LIBRARY_PATH \
-  && chmod -R 755 $SS_HOME/bin $SS_HOME/jre/bin $SS_HOME/lib:$SS_HOME/jre/lib
+  && chmod -R 755 $SS_HOME/bin $SS_HOME/jre/bin $SS_HOME/lib $SS_HOME/jre/lib \
+  && apk del .dev
   
 CMD sonar-scanner
