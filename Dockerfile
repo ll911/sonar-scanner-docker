@@ -5,7 +5,8 @@ ENV SS_VER=3.2.0.1227 \
     SS_HOME=/sonar-scanner
 
 RUN apk update \
-  && apk add --no-cache --virtual .dev wget unzip git \
+  && apk add --no-cache --virtual .dev wget unzip \
+  && apk add --no-cache git \
   && git config --global url.https://github.com/.insteadOf git://github.com/ \
   && wget -O /tmp/ss.zip https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SS_VER-linux.zip \
   && unzip /tmp/ss.zip -d / \
