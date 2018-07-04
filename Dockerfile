@@ -17,8 +17,11 @@ RUN apk update \
   && chmod -R 755 $SS_HOME/bin $SS_HOME/jre/bin $SS_HOME/lib $SS_HOME/jre/lib \
   && apk del .dev
 
+COPY entrypoint.sh $SS_HOME/bin
+
 ENV JAVA_HOME=$SS_HOME/jre \
   PATH=$SS_HOME/bin:$SS_HOME/jre/bin:$PATH \
   LD_LIBRARY_PATH=$SS_HOME/lib:$SS_HOME/jre/lib:$LD_LIBRARY_PATH
   
 CMD sonar-scanner
+ENTRYPOINT ["entrypoint.sh"]
